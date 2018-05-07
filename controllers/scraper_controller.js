@@ -57,7 +57,7 @@ router.post("/scrape", function(req, res) {
       // Add the text and href of every link, and save them as properties of the result object
       result.title = $(this).children("a").text();
 
-      console.log("What's the result title? " + result.title);
+      //console.log("What's the result title? " + result.title);
       
       result.link = $(this).children("a").attr("href");
 
