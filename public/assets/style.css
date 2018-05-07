@@ -14,8 +14,8 @@ body,html {
 	overflow: hidden;
     background-size: 50%;
     background-position: center;
-    /* background-image: url('../images/newspaper.png');
-    background-repeat: no-repeat; */
+    background-image:  url("https://img.etsystatic.com/il/82eee2/826670393/il_340x270.826670393_fvq4.jpg");
+    background-repeat: no-repeat; 
     height: 400px;
     width: 100%;
 }

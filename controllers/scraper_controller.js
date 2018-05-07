@@ -107,7 +107,7 @@ router.post("/save", function(req, res) {
 
 });
 
-router.get("/delete/:id", function(req, res) {
+router.post("/delete/:id", function(req, res) {
 
   console.log("ID is getting read for delete" + req.params.id);
 
@@ -140,12 +140,12 @@ router.get("/notes/:id", function(req, res) {
 });
 
 // This will grab an article by it's ObjectId
-router.get("/articles/:id", function(req, res) {
+router.get("/articles/:id", function(req, res) { 
 
   console.log("ID is getting read" + req.params.id);
 
   // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
-  Article.findOne({"_id": req.params.id})
+  Article.findOne({ _id: req.params.id })
 
   .populate('notes')
 
@@ -166,6 +166,7 @@ router.post("/articles/:id", function(req, res) {
   // Create a new note and pass the req.body to the entry
   var newNote = new Note(req.body);
   // And save the new note the db
+  console.log("in post new /articles/:id newnote\n ", newNote);
   newNote.save(function(error, doc) {
     // Log any errors
     if (error) {
