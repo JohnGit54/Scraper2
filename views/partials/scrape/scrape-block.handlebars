@@ -1,4 +1,3 @@
-{{!-- this display uneaten burgers - left side --}}
 
 <div class="panel panel-default ">
 
@@ -13,8 +12,8 @@
             </div>
             <div class="col-md-3">
                 {{!-- {{#unless this.devoured}} --}}
-                <form action="/api/burgers/{{this._id}}" method="POST">
-                    <button type="submit" data-id="{{this._id}}">DEVOUR!</button>
+                <form action="/delete/:{{this._id}}" method="POST">
+                    <button type="submit" data-id="{{this._id}}">DELETE!</button>
                 </form>
                 {{!-- {{/unless}} --}}
             </div>
