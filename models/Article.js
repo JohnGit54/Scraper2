@@ -17,6 +17,7 @@ var ArticleSchema = new Schema({
         required: true
     },
 
+    //not using summary- couldn't get correct syntax
     summary: {
         type: String,
         required: false
@@ -37,7 +38,7 @@ var ArticleSchema = new Schema({
     }]
 })
 
-//This creates our modle from the above schema, 
+//This creates our model from the above schema, 
 //using mongoose's model method
 
 var Article = mongoose.model("Article" , ArticleSchema) ;

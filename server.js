@@ -6,8 +6,8 @@ var mongoose = require("mongoose");
 var request = require("request");
 //adding the logger morgan - similar to example
 var logger = require("morgan");
-//using axios - similar to example
 
+//using axios - similar to example
 var axios = require("axios");
 
 var cheerio = require("cheerio");
@@ -49,7 +49,7 @@ app.use("/", routes);
 mongoose.connect("mongodb://localhost/scraperdb");
 
 
-//ROUTES -in controllers/scraper_controller.js
+//ROUTES moved into controllers/scraper_controller.js
 
 
 

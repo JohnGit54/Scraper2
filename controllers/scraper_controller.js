@@ -11,8 +11,8 @@ var mongoose = require("mongoose");
 // Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
 
-//var Note = require("../models/Note.js");
-//var Article = require("../models/Article.js");
+var Note = require("../models/Note.js");
+var Article = require("../models/Article.js");
 var db = require('../models');
 
 router.get("/", function (req, res) {
@@ -56,18 +56,16 @@ router.post("/scrape", function (req, res) {
       // Save an empty result object
       var result = {};
 
-      // Add the text and href of every link, and save them as properties of the result object
+      // Add the text and href of every link, summary not working, and save them as properties of the result object
       result.title = $(this).children("a").text();
 
-      //console.log("What's the result title? " + result.title);
-
       result.link = $(this).children("a").attr("href");
+
+      //result.summary = $(this).children("p.summary").text();
 
       scrapedArticles[i] = result;
 
     });
-
-    console.log("Scraped Articles object built nicely: " + scrapedArticles);
 
     var hbsArticleObject = {
       articles: scrapedArticles
@@ -79,9 +77,7 @@ router.post("/scrape", function (req, res) {
 });
 
 router.post("/save", function (req, res) {
-
-  console.log("This is the title: " + req.body.title);
-
+ 
   var newArticleObject = {};
 
   newArticleObject.title = req.body.title;
@@ -89,8 +85,6 @@ router.post("/save", function (req, res) {
   newArticleObject.link = req.body.link;
 
   var entry = new Article(newArticleObject);
-
-  console.log("We can save the article: " + entry);
 
   // Now, save that entry to the db
   entry.save(function (err, doc) {
@@ -124,18 +118,13 @@ router.post("/delete/:id", function (req, res) {
   });
 });
 
+//Delete note
 router.get("/notes/:id", function (req, res) {
-
-  console.log("ID is getting read for delete" + req.params.id);
-
-  console.log("Able to activate delete function.");
 
   db.Note.findOneAndRemove({ "_id": req.params.id }, function (err, doc) {
     if (err) {
-      console.log("Not able to delete:" + err);
-    } else {
-      console.log("Able to delete, Yay");
-    }
+      console.log("Note delete err: " + err);
+    } 
     res.send(doc);
   });
 });
@@ -172,9 +161,7 @@ router.post("/articles/:id", function (req, res) {
     else {
       // Use the article id to find it and then push note
       db.Article.findOneAndUpdate({ "_id": req.params.id }, { $push: { notes: doc._id } }, { new: true, upsert: true })
-
         .populate('notes')
-
         .exec(function (err, doc) {
           if (err) {
             console.log("Cannot find article.");
