@@ -21,6 +21,7 @@ router.get("/", function(req, res) {
 // This will get the articles scraped and saved in db and show them in list.
 router.get("/savedarticles", function(req, res) {
 
+   console.log(" redirected - in savedarticles");
   // Grab every doc in the Articles array
   Article.find({}, function(error, doc) {
     // Log any errors
