@@ -1,0 +1,12 @@
+body,html {
+       
+    /* Center and scale the image nicely */   
+
+    /* background:  url("https://img.etsystatic.com/il/82eee2/826670393/il_340x270.826670393_fvq4.jpg") no-repeat center center fixed;  */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    opacity: 25%;
+}
+
