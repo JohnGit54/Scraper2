@@ -1,14 +1,58 @@
- {{!-- place burger.png centered then put Eat-da-burger under it--}}
-<div class="container">
 
-    <div class="row">
-        <div class="col-md-12  col-sm-12  ">
-            <ul>
-                {{#each articles}} {{> scrape/scrape-block }} {{/each}}
+
+   {{!-- start of navigation bar --}}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">John P. - Mongo Scraper</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">Saved Article</a>
+                </li>
+
             </ul>
+            <form action="/scrape" method="POST" class="navbar-form navbar-left">
+                <button type="submit" class="btn btn-default">SCRAPE NEW ARTICLES!</button>
+            </form >
+        </div>
+    </nav>
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+            </div>
         </div>
     </div>
-
-   
+    <div class="row">
+        <div class="col-md-12">
+            {{#each articles}}
+            <div class="panel panel-primary">
+                <div class="panel-heading row">
+                    <div class="col-xs-9">
+                        <h3 class="panel-title pull-left">{{this.title}}</h3>
+                    </div>
+                    <div class="col-xs-3">
+                        <form action="/save" method="POST">
+                            <input id="article-title" type="hidden" name="title" value="{{this.title}}">
+                            <input id="article-link" type="hidden" name="link" value={{this.link}}>
+                            <button type="submit" class="btn btn-default pull-right">SAVE ARTICLE</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12>">
+                        <div class="panel-body">
+                            <p>{{this.link}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
 </div>
