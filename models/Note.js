@@ -8,17 +8,17 @@ var Schema = mongoose.Schema;
 //Similar to Sequelize model
 
 var NoteSchema = new Schema({
- 
+
     title: {
         type: String
-      },    
-   
-    
+    },
+
+
     body: {
         type: String
-      },
+    },
 
- //note is an object that stores a Article Id
+    //note is an object that stores a Article Id
     // The ref property links the ObjectId to the Note modeil
     // This allows us to populate the Article with an associated Note
 
