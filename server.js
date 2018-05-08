@@ -50,8 +50,6 @@ mongoose.connect("mongodb://localhost/scraperdb");
 //ROUTES moved into controllers/scraper_controller.js
 
 
-
-
 //start the server
 app.listen(PORT, function () {
     console.log("App running on Port: ", PORT);
