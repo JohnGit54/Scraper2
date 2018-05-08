@@ -44,8 +44,15 @@ var routes = require("./controllers/scraper_controller.js");
 app.use("/", routes);
 
 //connect to Mongo DB
-mongoose.connect("mongodb://localhost/scraperdb");
-  
+//mongoose.connect("mongodb://localhost/scraperdb");
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines" ;
+
+//set mongoose to leverage built in javascript ES6Promises
+//Connect to Mongo DB
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI); 
+
 
 //ROUTES moved into controllers/scraper_controller.js
 
