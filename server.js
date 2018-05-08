@@ -13,9 +13,7 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 
 //require all models
-// Requiring our Note and Article models
-//var Note = require("./models/Note.js");
-//var Article = require("./models/Article.js");
+// Requiring our /models -Note and Article models 
 
 var db = require('./models');
 
@@ -47,7 +45,7 @@ app.use("/", routes);
 
 //connect to Mongo DB
 mongoose.connect("mongodb://localhost/scraperdb");
-
+  
 
 //ROUTES moved into controllers/scraper_controller.js
 
